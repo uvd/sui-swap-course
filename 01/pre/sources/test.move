@@ -14,24 +14,19 @@ module pre::test {
     use sui::tx_context::sender;
     #[test_only]
     use sui::object_bag;
-    #[test_only]
-    use std::debug;
-
-    #[test_only]
-
 
     struct T1 has store,key {}
 
     struct T2 has store {}
 
-    struct Obj  has key, store {
+    struct Obj  has key {
         id: UID
     }
 
-    // store  key drop  copy
 
     struct Obj1 has key{
         id:UID,
+
     }
 
     struct O2  has key, store {
@@ -46,25 +41,16 @@ module pre::test {
         // let table =   table::new<String,String>(ctx);
 
         let bag = bag::new(ctx);
-        bag::add(&mut bag, b"11", 11u32);
+        bag::add(&mut bag, b"11", 11);
         bag::add(&mut bag, 11, T1 {});
-        bag::add(&mut bag, 12, T1{});
+        bag::add(&mut bag, 12, O2 { id: object::new(ctx) });
         transfer::transfer(bag, sender(ctx));
 
+        let bag = object_bag::new(ctx);
 
-        let obj_bag = object_bag::new(ctx);
-        object_bag::add(&mut obj_bag,1,Obj{
-            id:object::new(ctx)
-        });
+        object_bag::add(&mut  bag, 1,O2{id: object::new(ctx)});
+        transfer::transfer(bag, sender(ctx));
 
-
-
-        debug::print(&obj_bag);
-
-
-       // object_bag::add(&mut obj_bag,1,T1{});
-
-        transfer::transfer(obj_bag, sender(ctx));
         test_scenario::end(sce);
     }
 }
