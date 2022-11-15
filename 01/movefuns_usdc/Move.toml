@@ -1,0 +1,10 @@
+[package]
+name = "movefuns_usdc"
+version = "0.0.1"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework", rev = "edad77fbc05859e756b117f3f013ca38fff713ef" }
+
+[addresses]
+movefuns_usdc =  "0x0"
+sui =  "0000000000000000000000000000000000000002"

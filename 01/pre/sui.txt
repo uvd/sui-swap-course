@@ -1,0 +1,13 @@
+https://sui.io/
+
+https://docs.sui.io/build/install
+
+https://github.com/MystenLabs/sui
+
+https://explorer.sui.io/
+
+# Sui Wallet
+https://chrome.google.com/webstore/detail/sui-wallet/opcgpfmipidbgpenhmajoajpbobppdil?hl=zh-CN
+
+
+Bag  table vec_map  object_bag ObjectTable

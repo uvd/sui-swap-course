@@ -1,0 +1,9 @@
+
+#
+0x571ef089372d101929e4de33176bd1e4ee2163b8
+#
+0xccca89bc0c98310e748dbf625a51642dc2cedf2d
+
+
+sui client call  --package 0xccca89bc0c98310e748dbf625a51642dc2cedf2d --module usdt --function mint_me --gas-budget 10000 \
+ --args 0x571ef089372d101929e4de33176bd1e4ee2163b8 100000000
