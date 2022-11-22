@@ -3,7 +3,7 @@ name = "movefuns_usdc"
 version = "0.0.1"
 
 [dependencies]
-Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework", rev = "edad77fbc05859e756b117f3f013ca38fff713ef" }
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework", rev = "e2dccbf3514f174bab2687496a46a6a14e83051c" }
 
 [addresses]
 movefuns_usdc =  "0x0"
