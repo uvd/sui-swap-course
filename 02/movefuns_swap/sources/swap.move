@@ -7,8 +7,8 @@ module movefuns_swap::swap {
     use sui::tx_context::{TxContext, sender};
 
     public entry fun create_pool<CoinX, CoinY>(flag: &mut Flag, ctx: &mut TxContext) {
-        assert!(flag::exists_x_y<CoinX, CoinY>(flag), 1001) ;
-        assert!(flag::exists_x_y<CoinY, CoinX>(flag), 1001) ;
+        assert!(!flag::exists_x_y<CoinX, CoinY>(flag), 1001) ;
+        assert!(!flag::exists_x_y<CoinY, CoinX>(flag), 1001) ;
         let id = pool::create_pool<CoinX, CoinY>(ctx);
         flag::add<CoinX, CoinY>(flag, id);
     }
