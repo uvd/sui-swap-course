@@ -1,10 +1,10 @@
 module movefuns_swap::pool {
+    use movefuns_swap::enents;
     use sui::balance::{Self, Balance, Supply};
     use sui::coin::{Self, Coin};
     use sui::object::{Self, UID, ID};
     use sui::transfer;
     use sui::tx_context::{TxContext, sender};
-    use movefuns_swap::enents;
 
     struct LPCoin<phantom CoinX, phantom CoinY>   has drop {}
 
@@ -15,8 +15,7 @@ module movefuns_swap::pool {
         lp_coin: Supply<LPCoin<CoinX, CoinY>>
     }
 
-    public fun create_pool<CoinX, CoinY>(ctx: &mut TxContext):ID {
-
+    public fun create_pool<CoinX, CoinY>(ctx: &mut TxContext): ID {
         let pool = Pool<CoinX, CoinY> {
             id: object::new(ctx),
             coin_x: balance::zero(),
@@ -52,12 +51,12 @@ module movefuns_swap::pool {
     {
         let coin_x = coin::take(&mut pool.coin_x, amount_x, ctx);
         let coin_y = coin::take(&mut pool.coin_y, amount_y, ctx);
-        let  balance_lp =  coin::into_balance(lp);
+        let balance_lp = coin::into_balance(lp);
 
-        let balance_lp_real =  balance::split(&mut balance_lp, amount_x+amount_y);
+        let balance_lp_real = balance::split(&mut balance_lp, amount_x + amount_y);
 
-        balance::decrease_supply(&mut pool.lp_coin,balance_lp_real);
-        (coin_x, coin_y, coin::from_balance(balance_lp,ctx))
+        balance::decrease_supply(&mut pool.lp_coin, balance_lp_real);
+        (coin_x, coin_y, coin::from_balance(balance_lp, ctx))
     }
 
 
