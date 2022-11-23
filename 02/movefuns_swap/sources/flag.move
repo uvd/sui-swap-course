@@ -27,14 +27,14 @@ module movefuns_swap::flag {
 
     /// X-Y
     public(friend) fun add<CoinX, CoinY>(flag: &mut Flag, id: ID) {
-        table::add(&mut flag.pools, get_name_X_Y<CoinX, CoinY>(), id);
+        table::add(&mut flag.pools, get_name_x_y<CoinX, CoinY>(), id);
     }
 
     public(friend) fun exists_x_y<CoinX, CoinY>(flag: &mut Flag): bool {
-        table::contains(&flag.pools, get_name_X_Y<CoinX, CoinY>())
+        table::contains(&flag.pools, get_name_x_y<CoinX, CoinY>())
     }
 
-    public fun get_name_X_Y<CoinX, CoinY>(): String {
+    public fun get_name_x_y<CoinX, CoinY>(): String {
         let namex = get_name<CoinX>();
         let namey = get_name<CoinX>();
 
