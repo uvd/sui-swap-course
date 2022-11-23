@@ -1,4 +1,4 @@
-module movefuns_swap::enents {
+module movefuns_swap::events {
 
     use std::string::String;
 

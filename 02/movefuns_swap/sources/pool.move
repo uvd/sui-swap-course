@@ -1,5 +1,5 @@
 module movefuns_swap::pool {
-    use movefuns_swap::enents;
+    use movefuns_swap::events;
     use sui::balance::{Self, Balance, Supply};
     use sui::coin::{Self, Coin};
     use sui::object::{Self, UID, ID};
@@ -24,7 +24,7 @@ module movefuns_swap::pool {
         };
         let id = object::id(&pool);
         transfer::share_object(pool);
-        enents::emit_create<CoinX, CoinY>(sender(ctx));
+        events::emit_create<CoinX, CoinY>(sender(ctx));
         id
     }
 

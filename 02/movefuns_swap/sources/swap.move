@@ -1,18 +1,30 @@
 module movefuns_swap::swap {
     use movefuns_swap::flag::{Self, Flag};
     use movefuns_swap::pool::{Self, Pool, LPCoin};
+    use movefuns_swap::comparator::{less_than};
     use sui::coin::{Self, Coin};
     use sui::pay;
     use sui::transfer;
     use sui::tx_context::{TxContext, sender};
+    use std::type_name;
+    
+    const ErrPoolExists: u64 = 1001;
+    const ErrWrongTokenOrder: u64 = 1002;
 
     public entry fun create_pool<CoinX, CoinY>(flag: &mut Flag, ctx: &mut TxContext) {
-        assert!(!flag::exists_x_y<CoinX, CoinY>(flag), 1001) ;
-        assert!(!flag::exists_x_y<CoinY, CoinX>(flag), 1001) ;
+        assert!(is_type_in_order<CoinX, CoinY>(), ErrWrongTokenOrder);
+        assert!(!flag::exists_x_y<CoinX, CoinY>(flag), ErrPoolExists);
         let id = pool::create_pool<CoinX, CoinY>(ctx);
         flag::add<CoinX, CoinY>(flag, id);
     }
-
+    
+    /// Returns true if typeName of x is smaller than y, otherwise false
+    fun is_type_in_order<X, Y>(): bool {
+        let xType = type_name::borrow_string( &type_name::get<X>());
+        let yType = type_name::borrow_string( &type_name::get<Y>());
+        less_than(xType, yType)
+    }
+    
 
     public entry fun add_pool<CoinX, CoinY>(
         pool: &mut Pool<CoinX, CoinY>,
