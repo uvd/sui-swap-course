@@ -71,8 +71,8 @@ module movefuns_swap::swap {
                                                coin_y_vec: vector<Coin<CoinY>>, amount: u64, ctx: &mut TxContext) {
         let coin_y = coin::zero<CoinY>(ctx);
         pay::join_vec<CoinY>(&mut coin_y, coin_y_vec);
-        let coin_real_x = coin::split(&mut coin_y, amount, ctx);
-        let coin_x = pool::swap_y_to_x(pool, coin_real_x, ctx);
+        let coin_real_y = coin::split(&mut coin_y, amount, ctx);
+        let coin_x = pool::swap_y_to_x(pool, coin_real_y, ctx);
         let sender_addres = sender(ctx);
         transfer::transfer(coin_x, sender_addres);
         transfer::transfer(coin_y, sender_addres);
