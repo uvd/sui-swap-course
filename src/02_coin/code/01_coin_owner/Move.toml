@@ -1,9 +1,10 @@
 [package]
-name = "CoinDemo"
+name = "CoinOwner"
 version = "0.0.1"
+publish-at = "0x6fa9030ea5c683f6b48b80ab2bf9414381e025dcdea1180cf912ad4e7ed84c48"
 
 [dependencies]
-Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "releases/sui-v0.14.0-release" }
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "devnet" }
 
 [addresses]
-coin_demo = "0x0"
+coin_owner = "0x6fa9030ea5c683f6b48b80ab2bf9414381e025dcdea1180cf912ad4e7ed84c48"

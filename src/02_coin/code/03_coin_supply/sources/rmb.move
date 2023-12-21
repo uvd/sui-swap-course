@@ -24,6 +24,8 @@ module coin_demo::rmb {
         transfer::public_freeze_object(metadata);
 
         let supply = coin::treasury_into_supply(treasury);
+
+
         let supply_hold = SupplyHold {
             id: object::new(ctx),
             supply
@@ -32,6 +34,9 @@ module coin_demo::rmb {
     }
 
     public fun mint(sup: &mut SupplyHold, amount: u64, ctx: &mut TxContext): Coin<RMB> {
+
+
+
         let rmbBalance = balance::increase_supply(&mut sup.supply, amount);
         coin::from_balance(rmbBalance, ctx)
     }

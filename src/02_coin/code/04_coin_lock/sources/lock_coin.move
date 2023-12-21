@@ -37,6 +37,7 @@ module coin_lock::lock_coin {
     ) {
         let coin = coin::mint(treasury, amount, ctx);
         let current_ms = tx_context::epoch_timestamp_ms(ctx);
+
         let lock = LockCoin {
             id: object::new(ctx),
             balance: coin::into_balance(coin),
@@ -47,6 +48,9 @@ module coin_lock::lock_coin {
     }
 
     public entry fun unlock_coin(lock_coin: LockCoin, ctx: &mut TxContext) {
+
+        //
+
         let current_ms = tx_context::epoch_timestamp_ms(ctx);
         assert!(current_ms > lock_coin.release_time,ErrNotRelease);
         let LockCoin  { id,balance,release_time:_ }= lock_coin;

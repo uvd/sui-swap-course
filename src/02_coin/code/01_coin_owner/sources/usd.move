@@ -1,4 +1,4 @@
-module coin_demo::usd {
+module coin_owner::usd {
     use std::option;
     use sui::coin;
     use sui::transfer;

@@ -57,6 +57,8 @@ module coin_demo::usd {
         coin::from_balance(usdBalance, ctx)
     }
 
+
+
     public fun mint_cap(_: USDMintCap, usd: &mut USDSupply, amount: u64, ctx: &mut TxContext): Coin<USD> {
         let usdBalance = balance::increase_supply(&mut usd.supply, amount);
         coin::from_balance(usdBalance, ctx)

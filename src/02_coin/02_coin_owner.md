@@ -40,3 +40,7 @@ module coin_demo::rmb {
 ```
 
 大家可以看到 代码本身
+
+```shell
+sui client publish --gas-budget 100000000 
+```

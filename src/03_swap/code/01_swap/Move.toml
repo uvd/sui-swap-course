@@ -4,7 +4,7 @@ version = "0.0.1"
 
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/mainnet" }
-CoinDemo = { local= "../../../02_coin/code/coin_demo" }
+CoinOwner = { local= "../../../02_coin/code/01_coin_owner" }
 
 [addresses]
 swap = "0x0"

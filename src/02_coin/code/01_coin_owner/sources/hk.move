@@ -1,4 +1,4 @@
-module coin_demo::hk {
+module coin_owner::hk {
 
     use sui::coin::create_currency;
     use sui::tx_context::{TxContext, sender};

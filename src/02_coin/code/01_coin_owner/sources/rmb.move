@@ -1,4 +1,4 @@
-module coin_demo::rmb {
+module coin_owner::rmb {
     use std::option;
     use sui::coin;
     use sui::transfer;
